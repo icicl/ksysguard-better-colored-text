@@ -44,16 +44,21 @@ RowLayout {
 
 	GridLayout {
 		id: main
-		columns : total.barPosition == "bottom" ? 1 : 2
+		property bool place_bar_horiz: (total.barPosition == "bottom" || total.barPosition == "top")
+		columns : place_bar_horiz ? 1 : 2
+		rows : place_bar_horiz ? 2 : 1
 		Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-		rowSpacing: total.barPosition == "bottom" ? (total.gap || 2) : 0
-		columnSpacing: total.barPosition == "bottom" ? 0 : (total.gap || 2)
+		rowSpacing: place_bar_horiz ? (total.gap || 2) : 0
+		columnSpacing: place_bar_horiz ? 0 : (total.gap || 2)
+
 		TextSensor {
 			Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
 			id: textSensor
 			actualColor: total.actualColor
 			sensorValue: sensor.formattedValue
 			sensorName: root.controller.sensorLabels[root.controller.totalSensors[0]] || sensor.shortName
+			Layout.row: total.barPosition == "top" ? 1 : 0
+			Layout.column: total.barPosition == "left" ? 1 : 0
 		}
 
 		PercentBar {
@@ -65,6 +70,8 @@ RowLayout {
 			parent_w: parent.width
 			parent_h: parent.height
 			Layout.alignment: Qt.AlignBottom
+			Layout.row: total.barPosition == "bottom" ? 1 : 0
+			Layout.column: total.barPosition == "right" ? 1 : 0
 		}
 	}
 }

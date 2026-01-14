@@ -21,9 +21,11 @@ Kirigami.FormLayout {
 	property alias cfg_colorGradientTo: colorGradientToColorbox.color
 	property alias cfg_showBar: showBarCheckbox.checked
 	property string cfg_barPosition: controller.faceConfiguration.barPosition
+	property string cfg_textMode: controller.faceConfiguration.textMode
 	property alias cfg_fontsize: fontsizeSpin.value
 	property alias cfg_barWidth: barWidthSpin.value
 	property alias cfg_gap: gapSpin.value
+	property alias cfg_minwidth: minwidthSpin.value
 
 	Layout.fillWidth: true
     Layout.alignment: Qt.AlignHCenter
@@ -179,6 +181,28 @@ Kirigami.FormLayout {
                 }
             }
         }
+        Controls.RadioButton {
+            text: "top"
+            Controls.ButtonGroup.group: typeGroup
+            checked: cfg_barPosition == this.text
+			enabled: cfg_showBar
+            onCheckedChanged: {
+                if (checked) {
+                    cfg_barPosition = this.text
+                }
+            }
+        }
+        Controls.RadioButton {
+            text: "left"
+            Controls.ButtonGroup.group: typeGroup
+            checked: cfg_barPosition == this.text
+			enabled: cfg_showBar
+            onCheckedChanged: {
+                if (checked) {
+                    cfg_barPosition = this.text
+                }
+            }
+        }
 	}
 
 	Kirigami.Separator {
@@ -228,6 +252,132 @@ Kirigami.FormLayout {
 				width: 100
 			}
 		}
+
+		Row {
+			spacing: 20
+			Controls.Label {
+				text: i18n("Min Width: ")
+			}
+			Controls.SpinBox {
+				id: minwidthSpin
+				from: 0
+				to: 1000
+				value: minwidth
+				Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+				width: 100
+			}
+		}
 	}
 
+	Kirigami.Separator {
+		Kirigami.FormData.isSection: true
+	}
+
+	ColumnLayout {
+		Kirigami.FormData.label: "Text Display"
+		spacing: 8
+		Layout.alignment: Qt.AlignHCenter
+
+		Controls.ButtonGroup {
+			id: textModeGroup
+		}
+
+		// BOTH
+		Controls.RadioButton {
+			property string value: "both_label_first"
+			text: "Label + Value (Label first)"
+			Controls.ButtonGroup.group: textModeGroup
+            checked: cfg_textMode == this.value
+            onCheckedChanged: {
+                if (checked) {
+                    cfg_textMode = this.value
+                }
+            }
+		}
+		Controls.RadioButton {
+			property string value: "both_value_first"
+			text: "Label + Value (Value first)"
+			Controls.ButtonGroup.group: textModeGroup
+            checked: cfg_textMode == this.value
+            onCheckedChanged: {
+                if (checked) {
+                    cfg_textMode = this.value
+                }
+            }
+		}
+
+		Kirigami.Separator { }
+
+		// LABEL ONLY
+		Controls.RadioButton {
+			property string value: "label_left"
+			text: "Label only (Left)"
+			Controls.ButtonGroup.group: textModeGroup
+            checked: cfg_textMode == this.value
+            onCheckedChanged: {
+                if (checked) {
+                    cfg_textMode = this.value
+                }
+            }
+		}
+		Controls.RadioButton {
+			property string value: "label_center"
+			text: "Label only (Center)"
+			Controls.ButtonGroup.group: textModeGroup
+            checked: cfg_textMode == this.value
+            onCheckedChanged: {
+                if (checked) {
+                    cfg_textMode = this.value
+                }
+            }
+		}
+		Controls.RadioButton {
+			property string value: "label_right"
+			text: "Label only (Right)"
+			Controls.ButtonGroup.group: textModeGroup
+            checked: cfg_textMode == this.value
+            onCheckedChanged: {
+                if (checked) {
+                    cfg_textMode = this.value
+                }
+            }
+		}
+
+		Kirigami.Separator { }
+
+		// VALUE ONLY
+		Controls.RadioButton {
+			property string value: "value_left"
+			text: "Value only (Left)"
+			Controls.ButtonGroup.group: textModeGroup
+            checked: cfg_textMode == this.value
+            onCheckedChanged: {
+                if (checked) {
+                    cfg_textMode = this.value
+                }
+            }
+		}
+		Controls.RadioButton {
+			property string value: "value_center"
+			text: "Value only (Center)"
+			Controls.ButtonGroup.group: textModeGroup
+            checked: cfg_textMode == this.value
+            onCheckedChanged: {
+                if (checked) {
+                    cfg_textMode = this.value
+                }
+            }
+		}
+		Controls.RadioButton {
+			property string value: "value_right"
+			text: "Value only (Right)"
+			Controls.ButtonGroup.group: textModeGroup
+            checked: cfg_textMode == this.value
+            onCheckedChanged: {
+                if (checked) {
+                    cfg_textMode = this.value
+                }
+            }
+		}
+	}
 }

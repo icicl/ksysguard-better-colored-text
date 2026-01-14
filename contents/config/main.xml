@@ -56,6 +56,14 @@
             <label>Gap</label>
             <default>2</default>
         </entry>
+        <entry name="minwidth" type="Int">
+            <label>Min Width</label>
+            <default>50</default>
+        </entry>
+        <entry name="textMode" type="String">
+            <label>Text layout</label>
+            <default>both_label_first</default>
+        </entry>
     </group> 
 
 </kcfg>

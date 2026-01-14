@@ -16,6 +16,8 @@ RowLayout {
 	property string sensorName
 	// property int fixed_width
 	readonly property int fontsize: controller.faceConfiguration.fontsize
+    readonly property int minwidth: controller.faceConfiguration.minwidth
+    readonly property string textMode: controller.faceConfiguration.textMode
 
 	id: sensor
 	Layout.fillHeight: true 
@@ -23,27 +25,27 @@ RowLayout {
     Layout.alignment : Qt.AlignHCenter | Qt.AlignTop
     
     // Layout.preferredWidth: fixed_width
-    Layout.minimumWidth: 50
+    Layout.minimumWidth: sensor.minwidth
     // Layout.maximumWidth: fixed_width
     Controls.Label {
-        Layout.alignment: Qt.AlignLeft
+        Layout.alignment: (textMode == "label_right") ? Qt.AlignRight : (textMode == "label_center" ? Qt.AlignHCenter : Qt.AlignLeft)
         id: itemLabel
-        visible: true
+        visible: !(textMode == "value_left" || textMode == "value_center" || textMode == "value_right")
         color: actualColor
         z:1
         horizontalAlignment: Text.AlignHCenter
-        text: sensorName
+        text: (textMode != "both_value_first") ? sensorName : sensorValue
         font.pointSize: sensor.fontsize ||  Kirigami.Theme.defaultFont.pointSize * 0.8
         antialiasing : true        
     }
     Controls.Label {
-        Layout.alignment: Qt.AlignRight
+        Layout.alignment: (textMode == "value_left") ? Qt.AlignLeft : (textMode == "value_center" ? Qt.AlignHCenter : Qt.AlignRight)
         id: itemValue
-        visible: true
+        visible: !(textMode == "label_left" || textMode == "label_center" || textMode == "label_right")
         color: actualColor
         z:1
         horizontalAlignment: Text.AlignHCenter
-        text: sensorValue
+        text: (textMode != "both_value_first") ? sensorValue : sensorName
         font.pointSize: sensor.fontsize ||  Kirigami.Theme.defaultFont.pointSize * 0.8
         antialiasing : true        
     }
