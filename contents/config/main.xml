@@ -40,6 +40,10 @@
             <label>Show percentage bar</label>
             <default>true</default>
         </entry>
+        <entry name="invertBarFill" type="Bool">
+            <label>Invert bar fill direction</label>
+            <default>false</default>
+        </entry>
         <entry name="barPosition" type="String">
             <label>Bar position</label>
             <default>bottom</default>

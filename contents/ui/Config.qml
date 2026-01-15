@@ -20,6 +20,7 @@ Kirigami.FormLayout {
 	property alias cfg_colorGradientFrom: colorGradientFromColorbox.color
 	property alias cfg_colorGradientTo: colorGradientToColorbox.color
 	property alias cfg_showBar: showBarCheckbox.checked
+	property alias cfg_invertBarFill: invertBarFill.checked
 	property string cfg_barPosition: controller.faceConfiguration.barPosition
 	property string cfg_textMode: controller.faceConfiguration.textMode
 	property alias cfg_fontsize: fontsizeSpin.value
@@ -154,6 +155,10 @@ Kirigami.FormLayout {
         Controls.CheckBox {
 			id: showBarCheckbox
 			text: i18n("Show bar")
+		}
+        Controls.CheckBox {
+			id: invertBarFill
+			text: i18n("Fill bar from right/top")
 		}
 
 		Controls.ButtonGroup {
