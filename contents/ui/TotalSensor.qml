@@ -30,7 +30,7 @@ RowLayout {
     }
 
 	visible: true
-	property double percent : (sensor.value - rangeFrom) / (autoRange ? (sensor.maximum - sensor.minimum) : (rangeTo - rangeFrom))
+	property double percent : (sensor.value - (autoRange ? sensor.minimum : rangeFrom)) / (autoRange ? (sensor.maximum - sensor.minimum) : (rangeTo - rangeFrom))
 	property double clamped_percent : percent > 1 ? 1 : (percent < 0 ? 0 : percent)
 	property color actualColor : enableColorGradient ? gradien.generateGradient(colorGradientFrom, colorGradientTo, clamped_percent) : Kirigami.Theme.textColor
 
