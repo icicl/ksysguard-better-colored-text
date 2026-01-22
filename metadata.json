@@ -3,6 +3,10 @@
     "KPlugin": {
         "Authors": [
             {
+                "Email": "dakfro@gmail.com",
+                "Name": "icicl"
+            },
+            {
                 "Email": "gerrnperl@outlook.com",
                 "Name": "Gerrnperl"
             }
@@ -11,13 +15,13 @@
         "Description": "A system monitor gauge displayed in text form, colored by value",
         "EnabledByDefault": true,
         "Icon": "format-text-color",
-        "Id": "org.gerrnperl.text",
+        "Id": "net.dfrost.bettercoloredtext",
         "License": "LGPLv2+",
         "Name": "Colored Text",
         "ServiceTypes": [
             "KSysguard/SensorFace"
         ],
-        "Version": "0.4",
+        "Version": "1.0",
         "Website": "https://plasma.kde.org/"
     },
     "X-KDE-ParentApp": "org.kde.plasmashell"

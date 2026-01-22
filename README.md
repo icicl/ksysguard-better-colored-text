@@ -1,6 +1,8 @@
-# Ksysguard Colored Text
+# Ksysguard Better Colored Text
+[Ksysguard Better Colored Text](https://github.com/icicl/ksysguard-better-colored-text)
 
 ## Overview 
+Based on [Ksysguard Colored Text](https://github.com/Gerrnperl/ksysguard-colored-text) by Gerrnperl. Expanded to include more configuration options.
 
 This project provides a display style for Ksysguard, featuring basic data text and a bar graph that represents data percentages. The text and bars utilize gradient colors based on the data values.
 
@@ -20,13 +22,18 @@ Visualize system stats with a percent bar, and/or a textual label, and/or the va
 
 ## Installation
 
-This sensor face can be installed directly from the KDE Plasma System Monitor. Alternatively, you can manually install it by following these steps:
+This sensor face can be installed directly from the KDE Plasma System Monitor. Alternatively, you can manually install it with these commands:
 
-1. Download the appropriate display style from the [releases](https://www.pling.com/p/1972690/) page or clone this repository.
-   - For plasma 5.x, download the `+plasma5` version.
-   - For plasma 6.x, download the `+plasma6` version or switch to the `plasma6` branch.
-2. Extract the downloaded file to `~/.local/share/ksysguard/sensorfaces/org.gerrnperl.text/`
-3. Restart the `Plasma shell` and `Plasma systemmonitors` for the changes to take effect.
+1. ```mkdir -p ~/.local/share/ksysguard/sensorfaces/net.dfrost.bettercoloredtext```
+2. ```curl -s https://api.github.com/repos/icicl/ksysguard-better-colored-text/releases/latest | grep "https://*" | grep ".tar.gz" | cut -d : -f 2,3 | tr -d \" | wget -i - -O - | tar -xz -C ~/.local/share/ksysguard/sensorfaces/net.dfrost.bettercoloredtext/```
+3. ```nohup plasmashell --replace >/dev/null 2>&1 &``` 
+
+Or you can install it even more manually following these steps:
+
+1. Download the `.tar.xz` file from the [latest release](https://github.com/icicl/ksysguard-better-colored-text/releases/latest).
+2. Extract the downloaded file to `~/.local/share/ksysguard/sensorfaces/net.dfrost.text/`
+3. Restart the Plasma shell for the changes to take effect (relog, or run `plasmashell --replace` in KRunner (`[Alt]+[Space]`)).
+4. When updating configuration options, you may experience a few visual bugs. These can be resolved by restarting the Plasma Shell, or by entering and exiting panel edit mode.
 
 ## Screenshots
 Example showcasing various configuration options: \
