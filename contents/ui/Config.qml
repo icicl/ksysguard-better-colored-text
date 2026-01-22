@@ -27,6 +27,7 @@ Kirigami.FormLayout {
 	property alias cfg_barWidth: barWidthSpin.value
 	property alias cfg_gap: gapSpin.value
 	property alias cfg_minwidth: minwidthSpin.value
+	property alias cfg_minwidthFull: minwidthFullSpin.value
 
 	Layout.fillWidth: true
     Layout.alignment: Qt.AlignHCenter
@@ -261,13 +262,28 @@ Kirigami.FormLayout {
 		Row {
 			spacing: 20
 			Controls.Label {
-				text: i18n("Min Width: ")
+				text: i18n("Min Width (Panel Summary): ")
 			}
 			Controls.SpinBox {
 				id: minwidthSpin
 				from: 0
 				to: 1000
 				value: minwidth
+				Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+				width: 100
+			}
+		}
+
+		Row {
+			spacing: 20
+			Controls.Label {
+				text: i18n("Min Width (Expanded View): ")
+			}
+			Controls.SpinBox {
+				id: minwidthFullSpin
+				from: 0
+				to: 2000
+				value: minwidthFull
 				Layout.preferredWidth: Kirigami.Units.gridUnit * 10
 				width: 100
 			}

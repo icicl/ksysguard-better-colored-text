@@ -31,4 +31,5 @@ Faces.SensorFace {
             Layout.fillWidth: true
         }
     }
+    Layout.minimumWidth: controller.faceConfiguration.minwidthFull
 }
