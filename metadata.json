@@ -17,7 +17,7 @@
         "Icon": "format-text-color",
         "Id": "net.dfrost.bettercoloredtext",
         "License": "LGPLv2+",
-        "Name": "Colored Text",
+        "Name": "Better Colored Text",
         "ServiceTypes": [
             "KSysguard/SensorFace"
         ],

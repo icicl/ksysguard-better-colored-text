@@ -24,9 +24,15 @@ Visualize system stats with a percent bar, and/or a textual label, and/or the va
 
 This sensor face can be installed directly from the KDE Plasma System Monitor. Alternatively, you can manually install it with these commands:
 
-1. ```mkdir -p ~/.local/share/ksysguard/sensorfaces/net.dfrost.bettercoloredtext```
-2. ```curl -s https://api.github.com/repos/icicl/ksysguard-better-colored-text/releases/latest | grep "https://*" | grep ".tar.gz" | cut -d : -f 2,3 | tr -d \" | wget -i - -O - | tar -xz -C ~/.local/share/ksysguard/sensorfaces/net.dfrost.bettercoloredtext/```
-3. ```nohup plasmashell --replace >/dev/null 2>&1 &``` 
+1. ```bash
+   mkdir -p ~/.local/share/ksysguard/sensorfaces/net.dfrost.bettercoloredtext
+   ```
+2. ```bash
+   curl -s https://api.github.com/repos/icicl/ksysguard-better-colored-text/releases/latest | grep "https://*" | grep ".tar.gz" | cut -d : -f 2,3 | tr -d \" | wget -i - -O - | tar -xz -C ~/.local/share/ksysguard/sensorfaces/net.dfrost.bettercoloredtext/
+   ```
+3. ```bash
+   nohup plasmashell --replace >/dev/null 2>&1 &
+   ``` 
 
 Or you can install it even more manually following these steps:
 
