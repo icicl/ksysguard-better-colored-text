@@ -19,7 +19,6 @@ Visualize system stats with a percent bar, and/or a textual label, and/or the va
 4. Configure the font size of the text, the width of the bar, and spacing between text and bar.
 5. Specify the minimum width of the summary view always in the panel, and of the expanded view when clicked.
 6. Configure whether the text label and/or value are shown, and their justification.
-7. Override the compact panel label text instead of always using the sensor-provided label.
 
 ## Installation
 
@@ -38,7 +37,7 @@ This sensor face can be installed directly from the KDE Plasma System Monitor. A
 Or you can install it even more manually following these steps:
 
 1. Download the `.tar.xz` file from the [latest release](https://github.com/icicl/ksysguard-better-colored-text/releases/latest).
-2. Extract the downloaded file to `~/.local/share/ksysguard/sensorfaces/net.dfrost.text/`
+2. Extract the downloaded file to `~/.local/share/ksysguard/sensorfaces/net.dfrost.bettercoloredtext/`
 3. Restart the Plasma shell for the changes to take effect (relog, or run `plasmashell --replace` in KRunner (`[Alt]+[Space]`)).
 4. When updating configuration options, you may experience a few visual bugs. These can be resolved by restarting the Plasma Shell, or by entering and exiting panel edit mode.
 

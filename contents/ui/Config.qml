@@ -28,7 +28,6 @@ Kirigami.FormLayout {
 	property alias cfg_gap: gapSpin.value
 	property alias cfg_minwidth: minwidthSpin.value
 	property alias cfg_minwidthFull: minwidthFullSpin.value
-	property alias cfg_customLabel: customLabelField.text
 
 	Layout.fillWidth: true
     Layout.alignment: Qt.AlignHCenter
@@ -304,7 +303,6 @@ Kirigami.FormLayout {
 			id: textModeGroup
 		}
 
-		// BOTH
 		Controls.RadioButton {
 			property string value: "both_label_first"
 			text: "Label + Value (Label first)"
@@ -330,7 +328,6 @@ Kirigami.FormLayout {
 
 		Kirigami.Separator { }
 
-		// LABEL ONLY
 		Controls.RadioButton {
 			property string value: "label_left"
 			text: "Label only (Left)"
@@ -367,7 +364,6 @@ Kirigami.FormLayout {
 
 		Kirigami.Separator { }
 
-		// VALUE ONLY
 		Controls.RadioButton {
 			property string value: "value_left"
 			text: "Value only (Left)"
@@ -400,22 +396,6 @@ Kirigami.FormLayout {
                     cfg_textMode = this.value
                 }
             }
-		}
-
-		Kirigami.Separator { }
-
-		Row {
-			spacing: 20
-			Controls.Label {
-				text: i18n("Custom compact label: ")
-			}
-			Controls.TextField {
-				id: customLabelField
-				text: customLabel
-				placeholderText: i18n("Use sensor label")
-				Layout.preferredWidth: Kirigami.Units.gridUnit * 12
-				width: 140
-			}
 		}
 	}
 }

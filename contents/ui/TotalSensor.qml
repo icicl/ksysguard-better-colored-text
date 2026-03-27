@@ -21,14 +21,28 @@ RowLayout {
 	readonly property color colorGradientTo: controller.faceConfiguration.colorGradientTo
     readonly property bool showBar: controller.faceConfiguration.showBar
     readonly property string barPosition: controller.faceConfiguration.barPosition
-    readonly property string customLabel: controller.faceConfiguration.customLabel
-
-    readonly property int gap: controller.faceConfiguration.gap
+	readonly property int gap: controller.faceConfiguration.gap
 	readonly property int barWidth: controller.faceConfiguration.barWidth
-    readonly property string defaultSensorLabel: root.controller.sensorLabels[root.controller.totalSensors[0]] || sensor.shortName
+    readonly property var totalSensorIds: {
+        if (root.controller.totalSensors && root.controller.totalSensors.length > 0) {
+            return root.controller.totalSensors
+        }
+
+        if (root.controller.totalSensor && root.controller.totalSensor.length > 0) {
+            return [root.controller.totalSensor]
+        }
+
+        return []
+    }
+    readonly property string totalSensorId: totalSensorIds.length > 0 ? totalSensorIds[0] : ""
     readonly property string displayLabel: {
-        const trimmedLabel = (customLabel || "").trim()
-        return trimmedLabel.length > 0 ? trimmedLabel : defaultSensorLabel
+        const controllerTitle = (root.controller.title || "").trim()
+        if (controllerTitle.length > 0) {
+            return controllerTitle
+        }
+
+        const sensorLabels = root.controller.sensorLabels || ({})
+        return sensorLabels[totalSensorId] || sensor.shortName || ""
     }
 
     ColorUtils.Gradien {
@@ -36,7 +50,9 @@ RowLayout {
     }
 
 	visible: true
-	property double percent : (sensor.value - (autoRange ? sensor.minimum : rangeFrom)) / (autoRange ? (sensor.maximum - sensor.minimum) : (rangeTo - rangeFrom))
+	property double rangeStart: autoRange ? sensor.minimum : rangeFrom
+	property double rangeSpan: autoRange ? (sensor.maximum - sensor.minimum) : (rangeTo - rangeFrom)
+	property double percent : rangeSpan === 0 ? 0 : (sensor.value - rangeStart) / rangeSpan
 	property double clamped_percent : percent > 1 ? 1 : (percent < 0 ? 0 : percent)
 	property color actualColor : enableColorGradient ? gradien.generateGradient(colorGradientFrom, colorGradientTo, clamped_percent) : Kirigami.Theme.textColor
 
@@ -45,7 +61,7 @@ RowLayout {
 	Sensors.Sensor {
 		id: sensor
 		updateRateLimit: root.controller.updateRateLimit
-		sensorId: root.controller.totalSensors[0]
+		sensorId: total.totalSensorId
 	}
 
 	GridLayout {
