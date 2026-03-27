@@ -21,9 +21,15 @@ RowLayout {
 	readonly property color colorGradientTo: controller.faceConfiguration.colorGradientTo
     readonly property bool showBar: controller.faceConfiguration.showBar
     readonly property string barPosition: controller.faceConfiguration.barPosition
+    readonly property string customLabel: controller.faceConfiguration.customLabel
 
     readonly property int gap: controller.faceConfiguration.gap
 	readonly property int barWidth: controller.faceConfiguration.barWidth
+    readonly property string defaultSensorLabel: root.controller.sensorLabels[root.controller.totalSensors[0]] || sensor.shortName
+    readonly property string displayLabel: {
+        const trimmedLabel = (customLabel || "").trim()
+        return trimmedLabel.length > 0 ? trimmedLabel : defaultSensorLabel
+    }
 
     ColorUtils.Gradien {
         id : gradien
@@ -56,7 +62,7 @@ RowLayout {
 			id: textSensor
 			actualColor: total.actualColor
 			sensorValue: sensor.formattedValue
-			sensorName: root.controller.sensorLabels[root.controller.totalSensors[0]] || sensor.shortName
+			sensorName: total.displayLabel
 			Layout.row: total.barPosition == "top" ? 1 : 0
 			Layout.column: total.barPosition == "left" ? 1 : 0
 		}

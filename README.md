@@ -19,6 +19,7 @@ Visualize system stats with a percent bar, and/or a textual label, and/or the va
 4. Configure the font size of the text, the width of the bar, and spacing between text and bar.
 5. Specify the minimum width of the summary view always in the panel, and of the expanded view when clicked.
 6. Configure whether the text label and/or value are shown, and their justification.
+7. Override the compact panel label text instead of always using the sensor-provided label.
 
 ## Installation
 

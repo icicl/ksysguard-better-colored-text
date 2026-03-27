@@ -28,6 +28,7 @@ Kirigami.FormLayout {
 	property alias cfg_gap: gapSpin.value
 	property alias cfg_minwidth: minwidthSpin.value
 	property alias cfg_minwidthFull: minwidthFullSpin.value
+	property alias cfg_customLabel: customLabelField.text
 
 	Layout.fillWidth: true
     Layout.alignment: Qt.AlignHCenter
@@ -399,6 +400,22 @@ Kirigami.FormLayout {
                     cfg_textMode = this.value
                 }
             }
+		}
+
+		Kirigami.Separator { }
+
+		Row {
+			spacing: 20
+			Controls.Label {
+				text: i18n("Custom compact label: ")
+			}
+			Controls.TextField {
+				id: customLabelField
+				text: customLabel
+				placeholderText: i18n("Use sensor label")
+				Layout.preferredWidth: Kirigami.Units.gridUnit * 12
+				width: 140
+			}
 		}
 	}
 }

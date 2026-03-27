@@ -72,6 +72,10 @@
             <label>Text layout</label>
             <default>both_label_first</default>
         </entry>
+        <entry name="customLabel" type="String">
+            <label>Custom compact label</label>
+            <default></default>
+        </entry>
     </group> 
 
 </kcfg>
