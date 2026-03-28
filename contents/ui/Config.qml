@@ -303,7 +303,6 @@ Kirigami.FormLayout {
 			id: textModeGroup
 		}
 
-		// BOTH
 		Controls.RadioButton {
 			property string value: "both_label_first"
 			text: "Label + Value (Label first)"
@@ -329,7 +328,6 @@ Kirigami.FormLayout {
 
 		Kirigami.Separator { }
 
-		// LABEL ONLY
 		Controls.RadioButton {
 			property string value: "label_left"
 			text: "Label only (Left)"
@@ -366,7 +364,6 @@ Kirigami.FormLayout {
 
 		Kirigami.Separator { }
 
-		// VALUE ONLY
 		Controls.RadioButton {
 			property string value: "value_left"
 			text: "Value only (Left)"
