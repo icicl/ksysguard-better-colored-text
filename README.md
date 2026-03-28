@@ -41,6 +41,14 @@ Or you can install it even more manually following these steps:
 3. Restart the Plasma shell for the changes to take effect (relog, or run `plasmashell --replace` in KRunner (`[Alt]+[Space]`)).
 4. When updating configuration options, you may experience a few visual bugs. These can be resolved by restarting the Plasma Shell, or by entering and exiting panel edit mode.
 
+## Panel Widget Titles
+
+To override the compact label in a panel widget, set the widget `Title` in the standard `Appearance` tab.
+
+If the title is blank, the face falls back to the sensor-provided label.
+
+For this to work reliably in Plasma panels, use the generic `System Monitor` widget and select `Better Colored Text` as its display style. Some preset widgets such as `Memory Usage` may keep using their own compact representation instead of the selected sensor face's compact label.
+
 ## Screenshots
 Example showcasing various configuration options: \
 ![Screenshot](screenshots/style03.png)
