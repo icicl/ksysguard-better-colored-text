@@ -21,7 +21,7 @@
         "ServiceTypes": [
             "KSysguard/SensorFace"
         ],
-        "Version": "1.0",
+        "Version": "1.0.1",
         "Website": "https://plasma.kde.org/"
     },
     "X-KDE-ParentApp": "org.kde.plasmashell"

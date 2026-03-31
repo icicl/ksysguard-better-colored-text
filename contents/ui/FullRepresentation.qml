@@ -9,6 +9,24 @@ import org.kde.ksysguard.sensors 1.0 as Sensors
 
 Faces.SensorFace {
     id: root
+    readonly property var primarySensorIds: {
+        if (controller.highPrioritySensorIds && controller.highPrioritySensorIds.length > 0) {
+            return controller.highPrioritySensorIds
+        }
+
+        if (controller.sensorIds && controller.sensorIds.length > 0) {
+            return controller.sensorIds
+        }
+
+        return []
+    }
+    readonly property var secondarySensorIds: {
+        if (controller.lowPrioritySensorIds && controller.lowPrioritySensorIds.length > 0) {
+            return controller.lowPrioritySensorIds
+        }
+
+        return []
+    }
     contentItem: ColumnLayout {
         Kirigami.Heading {
             Layout.alignment: Qt.AlignHCenter
@@ -21,13 +39,13 @@ Faces.SensorFace {
 
         Sensors.SensorDataModel {
             id: sensorModel
-            sensors: controller.highPrioritySensorIds
+            sensors: root.primarySensorIds
             sensorColors: controller.sensorColors
         }
 
        Faces.ExtendedLegend {
             sourceModel: sensorModel
-            sensorIds: controller.lowPrioritySensorIds
+            sensorIds: root.secondarySensorIds
             Layout.fillWidth: true
         }
     }
